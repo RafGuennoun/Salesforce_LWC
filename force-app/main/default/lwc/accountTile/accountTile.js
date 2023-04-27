@@ -20,6 +20,15 @@ export default class AccountTile extends LightningElement {
     }
 
     selectAccount(){
-        this.selectedAccountId == this.account.Id;
+        this.selectedAccountId = this.account.Id;
+
+        const accountselect = new CustomEvent('accountselect', {
+            detail: {
+                accountId: this.selectedAccountId
+            }
+        });
+
+        this.dispatchEvent(accountselect);
     }
+    
 }

@@ -6,6 +6,7 @@
             </lightning-card>
         </template>
         <template if:true= {accounts} >
+
             <div class = "slds-scrollable_y">
             
                 <lightning-layout horizontal-align = "left" multiple-rows>
@@ -21,8 +22,10 @@
                             large-device-size = "3">
     
                             <c-account-tile 
-                                account = {account}>
-
+                            account = {account}
+                            onaccountselect = {updateSelectedTile}
+                            selected-account-id = {selectedAccountId}
+                            >
                             </c-account-tile>
     
                         </lightning-layout-item>
