@@ -3,11 +3,39 @@
         <p>Nothing here </p>
     </template>
 
-    <template if:true = {accountId}>
+    <template if:true= {accountId} >
 
-        <lightning-card>
-            <h1>Related Opportunities</h1>
-        </lightning-card>
-    </template>
+        <p>Opportunities List</p>
+
+        <template if:false = {opps} >
+            <p>Opps = false</p>
+        </template>
+
+        <template if:true = {opps} >
+            <p>Opps = true</p>
+
+            <div class = "slds-scrollable_y">
+        
+                <lightning-layout horizontal-align = "left" >
+            
+                    <template for:each = {opps} for:item = "opp">
+          
+                        <lightning-layout-item 
+                            key = {opp.Id} 
+                            padding = "around-small" 
+                            size = "12" 
+                            small-device-size = "6"
+                            medium-device-size = "4" 
+                            large-device-size = "3">
     
+                            <p>==> {opp.Id} </p>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </div>
+    
+        </template>
+
+        
+    </template>
 </template>
