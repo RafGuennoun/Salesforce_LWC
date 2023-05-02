@@ -1,40 +1,45 @@
 <template>
 
-    <lightning-card title="Related Contacts">
+    <lightning-card title="Related Contacts" icon-name="standard:contact">
 
-        <template if:false={accountId}>
-            <p>No account selected </p>
-        </template>
+        <div class="slds-p-left_medium" >
 
-        <template if:true={accountId}>
-
-            <template if:true={emptyContacts}>
-                <p>No related contacts</p>
+            <template if:false={accountId}>
+                <p>No account selected</p>
+            </template>
+    
+            <template if:true={accountId}>
+    
+                <template if:true={emptyContacts}>
+                    <p>No related contacts</p>
+                </template>
+    
+                <template if:false={emptyContacts}>
+    
+                    <lightning-layout multiple-rows="true">
+    
+                        <template for:each={contacts} for:item="contact">
+    
+                            <lightning-layout-item 
+                                key={contact.Id} 
+                                size="12" 
+                                flexibility="auto">
+    
+                                <lightning-record-view-form record-id={contact.Id} object-api-name="Contact">
+    
+                                    <lightning-output-field field-name="Name"> </lightning-output-field>
+    
+                                </lightning-record-view-form>
+                
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </template>
+    
             </template>
 
-            <template if:false={emptyContacts}>
+        </div>
 
-                <lightning-layout multiple-rows="true">
-
-                    <template for:each={contacts} for:item="contact">
-
-                        <lightning-layout-item 
-                            key={contact.Id} 
-                            size="12" 
-                            flexibility="auto">
-
-                            <lightning-record-view-form record-id={contact.Id} object-api-name="Contact">
-
-                                <lightning-output-field field-name="Name"> </lightning-output-field>
-
-                            </lightning-record-view-form>
-            
-                        </lightning-layout-item>
-                    </template>
-                </lightning-layout>
-            </template>
-
-        </template>
 
     </lightning-card>
 </template>

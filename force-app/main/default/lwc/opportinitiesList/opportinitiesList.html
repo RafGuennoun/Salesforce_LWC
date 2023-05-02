@@ -1,41 +1,45 @@
 <template>
 
-    <lightning-card title="Related Opportinities">
+    <lightning-card title="Related Opportinities" icon-name="standard:opportunity">
 
-        <template if:false={accountId}>
-            <p>No account selected </p>
-        </template>
+        <div class="slds-p-left_medium" >
 
-        <template if:true={accountId}>
-
-            <template if:true={oppsEmpty}>
-                <p>No related opportunities</p>
+            <template if:false={accountId}>
+                <p>No account selected</p>
             </template>
-
-            <template if:false={oppsEmpty}>
-
-
-                <lightning-layout multiple-rows="true">
-
-                    <template for:each={opps} for:item="opp">
-
-                        <lightning-layout-item 
-                            key={opp.Id} 
-                            size="12" 
-                            flexibility="auto">
-
-                            <lightning-record-view-form record-id={opp.Id} object-api-name="Opportunity">
-                                <lightning-output-field field-name="Name"> </lightning-output-field>
-                            </lightning-record-view-form>
-     
-
-
-                        </lightning-layout-item>
-                    </template>
-                </lightning-layout>
+    
+    
+            <template if:true={accountId}>
+    
+                <template if:true={oppsEmpty}>
+                    <p>No related opportunities</p>
+                </template>
+    
+                <template if:false={oppsEmpty}>
+    
+    
+                    <lightning-layout multiple-rows="true">
+    
+                        <template for:each={opps} for:item="opp">
+    
+                            <lightning-layout-item 
+                                key={opp.Id} 
+                                size="12" 
+                                flexibility="auto">
+    
+                                <lightning-record-view-form record-id={opp.Id} object-api-name="Opportunity">
+                                    <lightning-output-field field-name="Name"> </lightning-output-field>
+                                </lightning-record-view-form>
+         
+    
+    
+                            </lightning-layout-item>
+                        </template>
+                    </lightning-layout>
+                </template>
+    
             </template>
-
-        </template>
+        </div>
 
     </lightning-card>
 </template>

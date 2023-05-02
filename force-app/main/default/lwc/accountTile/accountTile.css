@@ -3,6 +3,7 @@
     height: 120px;
     padding: 1px !important;
     border-radius: 5px;
+    overflow: auto;
    
 }
 
@@ -16,5 +17,14 @@
     padding: 5px;
     border: 3px solid rgb(0, 95, 178);
     border-radius: 5px;
+}
+
+.tile-wrapper:hover {
+    background-color: lightgray;
+}
+
+
+.selected:hover {
+    background-color: lightgray;
 }
   
