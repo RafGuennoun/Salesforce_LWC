@@ -3,7 +3,7 @@ import { LightningElement, wire, track } from 'lwc';
 import ACCMC from '@salesforce/messageChannel/AccountServices__c';
 import { subscribe, APPLICATION_SCOPE, MessageContext } from 'lightning/messageService';
 
-import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+import { getRecord } from 'lightning/uiRecordApi';
 
 import ACCOUNT_NAME from '@salesforce/schema/Account.Name';
 import ACCOUNT_NUMBER from '@salesforce/schema/Account.AccountNumber';

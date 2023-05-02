@@ -11,13 +11,11 @@ export default class OpportinitiesList extends LightningElement {
     subscription = null;
 
     accountId;  
-    
-    @track 
-    oppsList;
 
-    @api
     opps;
 
+    @track
+    oppsEmpty;
 
     @wire(MessageContext)
     messageContext;
@@ -44,8 +42,13 @@ export default class OpportinitiesList extends LightningElement {
     @wire(getOpportunities, {accID : '$accountId'})
     wiredOpps({data, error}){
         if (data) {
-            this.oppsList = data;
-            this.opps = this.oppsList;
+            this.opps = data;
+            console.log("Wired opps ==> " + this.opps.length);
+            if (this.opps.length === 0) {
+                this.oppsEmpty = true;
+            } else {
+                this.oppsEmpty = false;
+            }
             
         } else if (error) {
             console.log("ERROR");

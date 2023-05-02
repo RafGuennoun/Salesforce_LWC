@@ -1,41 +1,46 @@
 <template>
-    <template if:false = {accountId}>
-        <p>Nothing here </p>
-    </template>
 
-    <template if:true= {accountId} >
+    <lightning-card title="Related Opportinities">
 
-        <p>Opportunities List</p>
-
-        <template if:false = {opps} >
-            <p>Opps = false</p>
+        <template if:false={accountId}>
+            <p>No account selected </p>
         </template>
 
-        <template if:true = {opps} >
-            <p>Opps = true</p>
+        <template if:true={accountId}>
 
-            <div class = "slds-scrollable_y">
-        
-                <lightning-layout horizontal-align = "left" >
-            
-                    <template for:each = {opps} for:item = "opp">
-          
+            <template if:true={oppsEmpty}>
+                <p>No related opportunities</p>
+            </template>
+
+            <template if:false={oppsEmpty}>
+
+
+                <lightning-layout multiple-rows="true">
+
+                    <template for:each={opps} for:item="opp">
+
                         <lightning-layout-item 
-                            key = {opp.Id} 
-                            padding = "around-small" 
-                            size = "12" 
-                            small-device-size = "6"
-                            medium-device-size = "4" 
-                            large-device-size = "3">
-    
-                            <p>==> {opp.Id} </p>
+                            key={opp.Id} 
+                            size="12" 
+                            flexibility="auto">
+
+                            <lightning-card >
+
+                                <lightning-record-view-form record-id={opp.Id} object-api-name="Opportunity">
+
+                                    <lightning-output-field field-name="Name"> </lightning-output-field>
+
+
+                                </lightning-record-view-form>
+                            </lightning-card>
+
+
                         </lightning-layout-item>
                     </template>
                 </lightning-layout>
-            </div>
-    
+            </template>
+
         </template>
 
-        
-    </template>
+    </lightning-card>
 </template>
